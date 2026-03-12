@@ -1,0 +1,16 @@
+<!-- 总入口 -->
+<launch>
+  <arg name="arm_id" default="panda"/>
+  <arg name="robot_ip" default="192.168.199.228"/>
+  <!-- 启动panda机械臂，主要是速度控制器等底层启动 -->
+  <include file="$(find moveit_servo)/launch/panda_bringup.launch">
+    <arg name="arm_id" value="$(arg arm_id)"/>
+    <arg name="robot_ip" value="$(arg robot_ip)"/>
+  </include>
+  <!-- 准备MoveIt 求解、语义模型、运动学配置 -->
+  <include file="$(find moveit_servo)/launch/panda_moveit_servo_common.launch">
+    <arg name="arm_id" value="$(arg arm_id)"/>
+  </include>
+  <!-- 启动具体demo, 其中加载了 servo 的运动学参数 -->
+  <include file="$(find moveit_servo)/launch/panda_servo_cpp_example.launch"/>
+</launch>

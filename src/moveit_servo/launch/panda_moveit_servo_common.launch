@@ -1,0 +1,18 @@
+<!-- 准备MoveIt 求解、语义模型、运动学配置 -->
+<launch>
+  <arg name="arm_id" default="panda"/>
+
+  <!-- 语义模型 -->
+  <param name="robot_description_semantic"
+         textfile="$(find franka_description)/robots/panda/panda_arm_hand.srdf" />
+
+  <!-- 运动学 -->
+  <rosparam ns="robot_description_kinematics"
+            command="load"
+            file="$(find panda_moveit_config)/config/kinematics.yaml" />
+
+  <!-- 关节限制，推荐也加上 -->
+  <rosparam ns="robot_description_planning"
+            command="load"
+            file="$(find panda_moveit_config)/config/joint_limits.yaml" />
+</launch>

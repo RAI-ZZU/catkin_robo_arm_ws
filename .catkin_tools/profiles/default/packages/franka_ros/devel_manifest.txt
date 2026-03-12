@@ -1,0 +1,2 @@
+franka_ros/franka_ros
+/home/xdy/catkin_robo_arm_ws/devel/.private/franka_ros/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock

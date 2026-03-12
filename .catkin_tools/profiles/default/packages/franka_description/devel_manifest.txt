@@ -1,0 +1,5 @@
+franka_ros/franka_description
+/home/xdy/catkin_robo_arm_ws/devel/.private/franka_description/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/franka_description/share/franka_description/cmake/franka_descriptionConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/franka_description/cmake/franka_descriptionConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/franka_description/share/franka_description/cmake/franka_descriptionConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/franka_description/cmake/franka_descriptionConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/franka_description/lib/pkgconfig/franka_description.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/franka_description.pc

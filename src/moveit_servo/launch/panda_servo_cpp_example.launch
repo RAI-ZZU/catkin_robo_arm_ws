@@ -1,0 +1,11 @@
+<!-- 启动具体demo, 加载 servo 私有参数 -->
+<launch>
+  <node name="panda_cpp_interface_example"
+        pkg="moveit_servo"
+        type="panda_cpp_interface_example"
+        output="screen">
+
+    <rosparam command="load"
+              file="$(find moveit_servo)/config/panda_simulated_config.yaml" />
+  </node>
+</launch>
