@@ -1,0 +1,41 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/xdy/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/xdy/catkin_ws/src/ar_track_alvar/ar_track_alvar/include/**",
+        "/home/xdy/catkin_ws/src/Azure_Kinect_ROS_Driver/include/**",
+        "/home/xdy/catkin_ws/src/ros_canopen/canopen_402/include/**",
+        "/home/xdy/catkin_ws/src/ros_canopen/canopen_chain_node/include/**",
+        "/home/xdy/catkin_ws/src/ros_canopen/canopen_master/include/**",
+        "/home/xdy/catkin_ws/src/ros_canopen/canopen_motor_node/include/**",
+        "/home/xdy/catkin_ws/src/TCP-IP-ROS-6AXis/dobot_bringup/include/**",
+        "/home/xdy/catkin_ws/src/TCP-IP-ROS-6AXis/dobot_v4_bringup/include/**",
+        "/home/xdy/catkin_ws/src/franka_ros/franka_control/include/**",
+        "/home/xdy/catkin_ws/src/franka_ros/franka_example_controllers/include/**",
+        "/home/xdy/catkin_ws/src/franka_ros/franka_gripper/include/**",
+        "/home/xdy/catkin_ws/src/franka_ros/franka_hw/include/**",
+        "/home/xdy/catkin_ws/src/moveit_servo/include/**",
+        "/home/xdy/catkin_ws/src/OrbbecSDK_ROS1/include/**",
+        "/home/xdy/catkin_ws/src/TCP-IP-ROS-6AXis/rosdemo_v3/include/**",
+        "/home/xdy/catkin_ws/src/TCP-IP-ROS-6AXis/rosdemo_v4/include/**",
+        "/home/xdy/catkin_ws/src/TCP-IP-ROS-6AXis/rviz_dobot_control/include/**",
+        "/home/xdy/catkin_ws/src/ros_canopen/socketcan_bridge/include/**",
+        "/home/xdy/catkin_ws/src/ros_canopen/socketcan_interface/include/**",
+        "/home/xdy/catkin_ws/src/universal_robot/ur_kinematics/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
