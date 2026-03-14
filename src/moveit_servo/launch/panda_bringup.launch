@@ -1,7 +1,7 @@
 <!-- 启动panda机械臂，主要是速度控制器等底层启动 -->
 <launch>
   <arg name="arm_id" default="panda"/>
-  <arg name="robot_ip" default="192.168.199.228"/>
+  <arg name="robot_ip" default="192.168.5.245"/>
 
   <!-- robot_description 放这里更合理，因为 franka_control 也依赖它 -->
   <param name="robot_description"

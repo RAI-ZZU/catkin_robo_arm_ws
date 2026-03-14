@@ -4,6 +4,12 @@
 
 ## Panda机械臂配置
 
+1. 设置实时内核 https://www.franka.cn/FCI/installation_linux.html
+
+1. 设置英伟达补丁
+
+   
+   
 1. 安装底层驱动0.9.2， 得安装到系统底层，否则编译ros包还要手动给定libfranka的路径
 
    ```bash
@@ -18,7 +24,7 @@
 
    
 
-2. 激活FCI
+2. 网页激活FCI
 
    ![image-20260312193536930](README.assets/image-20260312193536930.png)
 
@@ -26,10 +32,10 @@
 
    ```bash
    # 测试panda延迟
-   sudo ping 192.168.199.228 -i 0.001 -D -c 10000 -s 1200
+   sudo ping 192.168.5.245 -i 0.001 -D -c 10000 -s 1200
    # 测试panda状态通讯
    cd /libfranka/build/examples
-   ./echo_robot_state  192.168.199.228
+   ./echo_robot_state  192.168.5.245
    ```
 
    
@@ -68,20 +74,20 @@
 1. 返回初始位置
 
    ```bash
-   roslaunch franka_example_controllers  move_to_start.launch robot_ip:=192.168.199.228
+   roslaunch franka_example_controllers  move_to_start.launch robot_ip:=192.168.5.245
    ```
 
 2. moveit拖拽运动测试
 
    ```bash
-   roslaunch panda_moveit_config  franka_control.launch robot_ip:=192.168.199.228
+   roslaunch panda_moveit_config  franka_control.launch robot_ip:=192.168.5.245
    ```
 
 3. 伺服模式测试
 
    ```bash
    # 返回初始位置
-   roslaunch franka_example_controllers  move_to_start.launch robot_ip:=192.168.199.228
+   roslaunch franka_example_controllers  move_to_start.launch robot_ip:=192.168.5.245
    # 执行demo
    roslaunch moveit_servo panda_servo_system.launch
    ```

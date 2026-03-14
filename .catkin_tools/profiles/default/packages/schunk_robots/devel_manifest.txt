@@ -1,0 +1,2 @@
+lwa4p/schunk_robots/schunk_robots
+/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_robots/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock

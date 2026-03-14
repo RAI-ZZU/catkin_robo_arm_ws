@@ -1,0 +1,5 @@
+lwa4p/lwa4p_moveit_config
+/home/xdy/catkin_robo_arm_ws/devel/.private/lwa4p_movit_config/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/lwa4p_movit_config/share/lwa4p_movit_config/cmake/lwa4p_movit_configConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/lwa4p_movit_config/cmake/lwa4p_movit_configConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/lwa4p_movit_config/share/lwa4p_movit_config/cmake/lwa4p_movit_configConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/lwa4p_movit_config/cmake/lwa4p_movit_configConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/lwa4p_movit_config/lib/pkgconfig/lwa4p_movit_config.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/lwa4p_movit_config.pc
