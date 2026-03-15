@@ -100,6 +100,17 @@ target_link_libraries(pose_tracking_example
 )
 
 
+add_executable(pose_tracker_node
+  src/cpp_interface_example/pose_tracker_node.cpp
+)
+add_dependencies(pose_tracker_node ${catkin_EXPORTED_TARGETS})
+# 注意：必须要链接 pose_tracking 库和 SERVO_LIB_NAME
+target_link_libraries(pose_tracker_node
+  ${catkin_LIBRARIES}
+  ${SERVO_LIB_NAME}
+  pose_tracking
+)
+
 
 ########################################
 ## Library for servoing toward a pose ##
@@ -150,6 +161,7 @@ install(
     panda_cpp_interface_example
     servo_server
     spacenav_to_twist
+    pose_tracker_node
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

@@ -94,9 +94,57 @@
 
    
 
+
+
+
+## Panda 末端位姿伺服使用
+
+1. 启动末端位姿追踪伺服
+
+   ```bash
+   roslaunch moveit_servo  panda_pose_tracker_node.launch 
+   ```
+
+2. 向话题`/panda_pose_tracker_node/target_pose` 发送`PoseStamped` 格式数据，默认要求发送的位姿是相对于`panda_link0`坐标系的，或者选择合适的tf变换
+
+   ```python
+       # 发送的例子
+       def servo_to_pose(self, position: list, orientation: list, frame_id="panda_link0"):
+               """
+               向 C++ Pose Tracker 发送目标位姿，进行连续跟随控制。
+               
+               :param position: [x, y, z] 目标位置
+               :param orientation: [qx, qy, qz, qw] 目标四元数姿态
+               :param frame_id: 参考坐标系，默认相对于基座 (panda_link0)
+               """
+               if len(position) != 3 or len(orientation) != 4:
+                   rospy.logerr("位置必须是 3维，姿态必须是 4维四元数")
+                   return
    
+               # 构造 PoseStamped 消息
+               target_pose = PoseStamped()
+               
+               # 赋予时间戳和参考坐标系 (极其重要)
+               target_pose.header.stamp = rospy.Time.now()
+               target_pose.header.frame_id = frame_id
+               
+               # 填入 XYZ
+               target_pose.pose.position.x = position[0]
+               target_pose.pose.position.y = position[1]
+               target_pose.pose.position.z = position[2]
+               
+               # 填入四元数
+               target_pose.pose.orientation.x = orientation[0]
+               target_pose.pose.orientation.y = orientation[1]
+               target_pose.pose.orientation.z = orientation[2]
+               target_pose.pose.orientation.w = orientation[3]
+   
+               # 发布出去！底层的 C++ 节点收到后会立刻开始解算并伺服过去
+               self.pose_tracker_pub.publish(target_pose)
+   
+   ```
 
-
+   
 
 
 

@@ -1,0 +1,41 @@
+<!-- 启动具体demo, 加载 servo 私有参数 -->
+<launch>
+
+  <arg name="arm_id" default="panda"/>
+  <arg name="robot_ip" default="192.168.5.245"/>
+  <!-- 启动panda机械臂，主要是速度控制器等底层启动 -->
+  <include file="$(find moveit_servo)/launch/panda_bringup.launch">
+    <arg name="arm_id" value="$(arg arm_id)"/>
+    <arg name="robot_ip" value="$(arg robot_ip)"/>
+  </include>
+  <!-- 准备MoveIt 求解、语义模型、运动学配置 -->
+  <include file="$(find moveit_servo)/launch/panda_moveit_servo_common.launch">
+    <arg name="arm_id" value="$(arg arm_id)"/>
+  </include>
+  <!-- 额外加载moveit group 其他的关节控制可能要用 -->
+  <include file="$(find panda_moveit_config)/launch/move_group.launch">
+    <arg name="load_gripper" value="true" />
+  </include>
+
+
+  <!-- 将关节控制器，力矩控制器加载到控制器管理器中，但是不启动 -->
+  <node name="trajectory_controller_spawner" 
+        pkg="controller_manager" 
+        type="spawner" 
+        respawn="false" 
+        output="screen" 
+        args="--stopped position_joint_trajectory_controller  effort_joint_trajectory_controller" />
+
+
+
+  <node name="panda_pose_tracker_node"
+        pkg="moveit_servo"
+        type="pose_tracker_node"
+        output="screen">
+
+    <rosparam command="load"
+              file="$(find moveit_servo)/config/panda_real_config.yaml" />
+    <rosparam command="load" 
+              file="$(find moveit_servo)/config/pose_tracking_settings.yaml" />
+  </node>
+</launch>
