@@ -28,4 +28,9 @@
   <!-- 夹爪 joint state relay -->
   <node name="gripper_js_relay" pkg="topic_tools" type="relay"
         args="/franka_gripper/joint_states /joint_states"/>
+        
+  <!-- 机器人状态发布 -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="100.0" />
+  </node>
 </launch>
