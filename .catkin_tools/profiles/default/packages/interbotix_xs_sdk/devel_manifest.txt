@@ -1,0 +1,9 @@
+vx300s/interbotix_ros_core/interbotix_xs_sdk
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_sdk/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_sdk/share/interbotix_xs_sdk/cmake/interbotix_xs_sdkConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xs_sdk/cmake/interbotix_xs_sdkConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_sdk/share/interbotix_xs_sdk/cmake/interbotix_xs_sdkConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xs_sdk/cmake/interbotix_xs_sdkConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_sdk/lib/libinterbotix_xs_sdk.so /home/xdy/catkin_robo_arm_ws/devel/lib/libinterbotix_xs_sdk.so
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_sdk/lib/interbotix_xs_sdk/xs_sdk_sim /home/xdy/catkin_robo_arm_ws/devel/lib/interbotix_xs_sdk/xs_sdk_sim
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_sdk/lib/interbotix_xs_sdk/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/lib/interbotix_xs_sdk/cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_sdk/lib/interbotix_xs_sdk/xs_sdk /home/xdy/catkin_robo_arm_ws/devel/lib/interbotix_xs_sdk/xs_sdk
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_sdk/lib/pkgconfig/interbotix_xs_sdk.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/interbotix_xs_sdk.pc

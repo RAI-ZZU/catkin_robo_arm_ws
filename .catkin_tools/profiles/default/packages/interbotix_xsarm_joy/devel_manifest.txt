@@ -1,0 +1,8 @@
+vx300s/interbotix_ros_xsarms/examples/interbotix_xsarm_joy
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_joy/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_joy/share/interbotix_xsarm_joy/cmake/interbotix_xsarm_joyConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xsarm_joy/cmake/interbotix_xsarm_joyConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_joy/share/interbotix_xsarm_joy/cmake/interbotix_xsarm_joyConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xsarm_joy/cmake/interbotix_xsarm_joyConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_joy/lib/interbotix_xsarm_joy/xsarm_joy /home/xdy/catkin_robo_arm_ws/devel/lib/interbotix_xsarm_joy/xsarm_joy
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_joy/lib/interbotix_xsarm_joy/xsarm_robot /home/xdy/catkin_robo_arm_ws/devel/lib/interbotix_xsarm_joy/xsarm_robot
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_joy/lib/interbotix_xsarm_joy/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/lib/interbotix_xsarm_joy/cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_joy/lib/pkgconfig/interbotix_xsarm_joy.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/interbotix_xsarm_joy.pc

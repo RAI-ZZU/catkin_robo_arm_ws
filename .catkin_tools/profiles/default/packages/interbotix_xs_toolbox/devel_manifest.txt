@@ -1,0 +1,2 @@
+vx300s/interbotix_ros_toolboxes/interbotix_xs_toolbox/interbotix_xs_toolbox
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xs_toolbox/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock

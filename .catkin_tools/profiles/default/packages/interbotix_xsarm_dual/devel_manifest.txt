@@ -1,0 +1,5 @@
+vx300s/interbotix_ros_xsarms/examples/interbotix_xsarm_dual
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_dual/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_dual/share/interbotix_xsarm_dual/cmake/interbotix_xsarm_dualConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xsarm_dual/cmake/interbotix_xsarm_dualConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_dual/share/interbotix_xsarm_dual/cmake/interbotix_xsarm_dualConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xsarm_dual/cmake/interbotix_xsarm_dualConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_dual/lib/pkgconfig/interbotix_xsarm_dual.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/interbotix_xsarm_dual.pc

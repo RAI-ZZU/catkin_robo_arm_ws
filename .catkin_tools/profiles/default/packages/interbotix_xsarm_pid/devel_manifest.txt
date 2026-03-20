@@ -1,0 +1,6 @@
+vx300s/interbotix_ros_xsarms/examples/interbotix_xsarm_pid
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_pid/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_pid/share/interbotix_xsarm_pid/cmake/interbotix_xsarm_pidConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xsarm_pid/cmake/interbotix_xsarm_pidConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_pid/share/interbotix_xsarm_pid/cmake/interbotix_xsarm_pidConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xsarm_pid/cmake/interbotix_xsarm_pidConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_pid/lib/interbotix_xsarm_pid/xsarm_pid /home/xdy/catkin_robo_arm_ws/devel/lib/interbotix_xsarm_pid/xsarm_pid
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_pid/lib/pkgconfig/interbotix_xsarm_pid.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/interbotix_xsarm_pid.pc

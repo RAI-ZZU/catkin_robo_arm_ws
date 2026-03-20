@@ -1,5 +1,0 @@
-lwa4p/schunk_robots/schunk_pw70
-/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_pw70/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
-/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_pw70/share/schunk_pw70/cmake/schunk_pw70Config.cmake /home/xdy/catkin_robo_arm_ws/devel/share/schunk_pw70/cmake/schunk_pw70Config.cmake
-/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_pw70/share/schunk_pw70/cmake/schunk_pw70Config-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/schunk_pw70/cmake/schunk_pw70Config-version.cmake
-/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_pw70/lib/pkgconfig/schunk_pw70.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/schunk_pw70.pc

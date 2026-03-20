@@ -1,0 +1,5 @@
+vx300s/interbotix_ros_xsarms/examples/interbotix_xsarm_moveit_interface
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_moveit_interface/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_moveit_interface/share/interbotix_xsarm_moveit_interface/cmake/interbotix_xsarm_moveit_interfaceConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xsarm_moveit_interface/cmake/interbotix_xsarm_moveit_interfaceConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_moveit_interface/share/interbotix_xsarm_moveit_interface/cmake/interbotix_xsarm_moveit_interfaceConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/interbotix_xsarm_moveit_interface/cmake/interbotix_xsarm_moveit_interfaceConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/interbotix_xsarm_moveit_interface/lib/pkgconfig/interbotix_xsarm_moveit_interface.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/interbotix_xsarm_moveit_interface.pc

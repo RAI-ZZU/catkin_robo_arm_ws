@@ -1,5 +1,0 @@
-lwa4p/schunk_robots/schunk_lwa4d
-/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_lwa4d/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
-/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_lwa4d/share/schunk_lwa4d/cmake/schunk_lwa4dConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/schunk_lwa4d/cmake/schunk_lwa4dConfig.cmake
-/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_lwa4d/share/schunk_lwa4d/cmake/schunk_lwa4dConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/schunk_lwa4d/cmake/schunk_lwa4dConfig-version.cmake
-/home/xdy/catkin_robo_arm_ws/devel/.private/schunk_lwa4d/lib/pkgconfig/schunk_lwa4d.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/schunk_lwa4d.pc
