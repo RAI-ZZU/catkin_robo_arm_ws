@@ -1,0 +1,5 @@
+vx300s/guided_vision
+/home/xdy/catkin_robo_arm_ws/devel/.private/guided_vision/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/guided_vision/share/guided_vision/cmake/guided_visionConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/guided_vision/cmake/guided_visionConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/guided_vision/share/guided_vision/cmake/guided_visionConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/guided_vision/cmake/guided_visionConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/guided_vision/lib/pkgconfig/guided_vision.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/guided_vision.pc

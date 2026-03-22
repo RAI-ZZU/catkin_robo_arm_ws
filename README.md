@@ -191,11 +191,15 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 
    
    
-2. moveit
+3. 使用moveit控制真机
 
    ```bash
    roslaunch interbotix_xsarm_moveit xsarm_moveit.launch robot_model:=vx300s use_actual:=true  dof:=7
    ```
 
+4. 使用改动版的主动观测臂
+   ```bash
+   roslaunch vx300s_7dof_description xsarm_control.launch 
+   ``` 
    
 

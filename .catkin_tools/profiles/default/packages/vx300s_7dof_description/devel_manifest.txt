@@ -1,0 +1,5 @@
+vx300s/vx300s_7dof_description
+/home/xdy/catkin_robo_arm_ws/devel/.private/vx300s_7dof_description/cmake.lock /home/xdy/catkin_robo_arm_ws/devel/./cmake.lock
+/home/xdy/catkin_robo_arm_ws/devel/.private/vx300s_7dof_description/share/vx300s_7dof_description/cmake/vx300s_7dof_descriptionConfig.cmake /home/xdy/catkin_robo_arm_ws/devel/share/vx300s_7dof_description/cmake/vx300s_7dof_descriptionConfig.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/vx300s_7dof_description/share/vx300s_7dof_description/cmake/vx300s_7dof_descriptionConfig-version.cmake /home/xdy/catkin_robo_arm_ws/devel/share/vx300s_7dof_description/cmake/vx300s_7dof_descriptionConfig-version.cmake
+/home/xdy/catkin_robo_arm_ws/devel/.private/vx300s_7dof_description/lib/pkgconfig/vx300s_7dof_description.pc /home/xdy/catkin_robo_arm_ws/devel/lib/pkgconfig/vx300s_7dof_description.pc
