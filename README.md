@@ -144,30 +144,17 @@
    
    ```
 
-   使用realsensed435相机
-   ```bash
-   sudo apt-get update
-   sudo apt-get install ros-noetic-ddynamic-reconfigure
-   sudo apt-get install ros-$ROS_DISTRO-realsense2-camera
-   ```
-   使用，启动相机节点，这是基于ros的话题方式
-   ```bash
-   roslaunch realsense2_camera rs_camera.launch
-   ```
-   可以更加简洁一些，直接使用python api而不用ros话题（但是最好体现安装刚才的`ros-$ROS_DISTRO-realsense2-camera`）
-   ```bash
-   pip3 install pyrealsense2
-   ```
 
 
 
-## VX300s 机械臂安装
+## VX300s 机械臂
 ### 安装
-```bash
-cd ~/catkin_robo_arm_ws/src/vx300s/interbotix_ros_core/interbotix_xs_sdk
-sudo cp 99-interbotix-udev.rules /etc/udev/rules.d/
-sudo udevadm control --reload-rules && sudo udevadm trigger
-```
+1. 配置USB规则
+   ```bash
+   cd ~/catkin_robo_arm_ws/src/vx300s/interbotix_ros_core/interbotix_xs_sdk
+   sudo cp 99-interbotix-udev.rules /etc/udev/rules.d/
+   sudo udevadm control --reload-rules && sudo udevadm trigger
+   ```
 
 
 
@@ -175,7 +162,7 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 
 ### 测试
 
-1. 虚拟
+1. 显示虚拟机械臂
 
    ```bash
    roslaunch interbotix_xsarm_descriptions xsarm_description.launch robot_model:=vx300s use_joint_pub_gui:=true
@@ -183,7 +170,7 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 
    
 
-2. 真机测试
+2. 启动真机（带有夹爪的6dof版本，7dof主动视觉版本机械臂不可用）
 
    ```bash
    roslaunch interbotix_xsarm_control xsarm_control.launch robot_model:=vx300s use_joint_pub_gui:=true
@@ -197,9 +184,24 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
    roslaunch interbotix_xsarm_moveit xsarm_moveit.launch robot_model:=vx300s use_actual:=true  dof:=7
    ```
 
-4. 使用改动版的主动观测臂
+4. 使用改动版的主动观测臂（7dof主动视觉版本机械臂，6dof夹爪版本不可用）
    ```bash
    roslaunch vx300s_7dof_description xsarm_control.launch 
    ``` 
    
 
+### 使用Realsense d435相机
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install ros-noetic-ddynamic-reconfigure
+   sudo apt-get install ros-$ROS_DISTRO-realsense2-camera
+   ```
+   使用，启动相机节点，这是基于ros的话题方式
+   ```bash
+   roslaunch realsense2_camera rs_camera.launch
+   ```
+   可以更加简洁一些，直接使用python api而不用ros话题（但是最好体现安装刚才的`ros-$ROS_DISTRO-realsense2-camera`）
+   ```bash
+   pip3 install pyrealsense2
+   ```
