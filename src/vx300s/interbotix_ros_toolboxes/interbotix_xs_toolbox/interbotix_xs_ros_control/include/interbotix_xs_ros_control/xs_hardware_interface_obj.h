@@ -23,6 +23,8 @@ public:
 
   XSHardwareInterface(ros::NodeHandle& nh);
   ~XSHardwareInterface();
+  virtual void doSwitch(const std::list<hardware_interface::ControllerInfo>& start_list,
+                        const std::list<hardware_interface::ControllerInfo>& stop_list) override;
   void init();
   void update(const ros::TimerEvent& e);
   void read();
@@ -34,7 +36,7 @@ protected:
   // Command Interfaces
   hardware_interface::JointStateInterface joint_state_interface;
   hardware_interface::PositionJointInterface position_joint_interface;
-
+  hardware_interface::VelocityJointInterface velocity_joint_interface; // 注册速度接口
   // Limit Interfaces
   joint_limits_interface::PositionJointSaturationInterface position_joint_saturation_interface;
 
@@ -42,7 +44,10 @@ protected:
   std::vector<double> joint_velocities;
   std::vector<double> joint_efforts;
   std::vector<double> joint_position_commands;
+  std::vector<double> joint_velocity_commands; // 存放速度指令
   std::vector<float> joint_commands_prev;
+  
+  std::string current_control_mode_ = "position";// ---> 新增 3：内部状态标志，默认是位置模式
 
   ros::NodeHandle nh;
   ros::Publisher pub_group;

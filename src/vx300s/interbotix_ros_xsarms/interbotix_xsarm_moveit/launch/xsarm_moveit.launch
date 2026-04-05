@@ -7,7 +7,10 @@
   <arg name="use_world_frame"                   default="true"/>
   <arg name="external_urdf_loc"                 default=""/>
   <arg name="external_srdf_loc"                 default=""/>
-  <arg name="mode_configs"                      default="$(find interbotix_xsarm_moveit)/config/modes.yaml"/>
+
+  <arg name="mode_config_file" value="$(eval '7dof_modes.yaml' if arg('dof') == 7 else 'modes.yaml')"/>
+  <arg name="mode_configs"                      default="$(find interbotix_xsarm_moveit)/config/$(arg mode_config_file)"/>
+
   <arg name="use_moveit_rviz"                   default="true"/>
   <arg name="rviz_frame"                        default="world"/>
   <arg name="use_gazebo"                        default="false"/>

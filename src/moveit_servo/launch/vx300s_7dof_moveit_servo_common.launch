@@ -1,0 +1,17 @@
+<launch>
+  <arg name="robot_name" default="vx300s_7dof"/>
+
+  <param name="$(arg robot_name)/robot_description_semantic"
+         command="$(find xacro)/xacro '$(find interbotix_xsarm_moveit)/config/srdf/vx300s_7dof.srdf.xacro' robot_name:=$(arg robot_name)" />
+
+  <rosparam ns="$(arg robot_name)/robot_description_kinematics"
+            command="load"
+            file="$(find interbotix_xsarm_moveit)/config/kinematics.yaml" />
+
+  <rosparam ns="$(arg robot_name)/robot_description_planning"
+            command="load"
+            file="$(find interbotix_xsarm_moveit)/config/joint_limits/7dof_joint_limits.yaml" />
+</launch>
+
+
+

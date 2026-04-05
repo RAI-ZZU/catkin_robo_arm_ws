@@ -1,17 +1,20 @@
 <launch>
 
-  <arg name="robot_model"                       default=""/>
+  <arg name="robot_model"                       default="vx300s_7dof"/>
   <arg name="robot_name"                        default="$(arg robot_model)"/>
   <arg name="base_link_frame"                   default="base_link"/>
   <arg name="show_ar_tag"                       default="false"/>
   <arg name="use_world_frame"                   default="true"/>
   <arg name="external_urdf_loc"                 default=""/>
   <arg name="use_rviz"                          default="false"/>
-  <arg name="mode_configs"                      default="$(find interbotix_xsarm_ros_control)/config/modes.yaml"/>
-  <arg name="dof"                               default="5"/>
+  <arg name="dof"                               default="7"/>
+  <arg name="mode_config_file" value="$(eval '7dof_modes.yaml' if arg('dof') == 7 else 'modes.yaml')"/>
+  <arg name="mode_configs"                      default="$(find interbotix_xsarm_ros_control)/config/$(arg mode_config_file)"/>
 
   <rosparam file="$(find interbotix_xsarm_ros_control)/config/$(arg dof)dof_controllers.yaml" command="load" ns="$(arg robot_name)"/>
-  <rosparam file="$(find interbotix_xsarm_ros_control)/config/hardware.yaml" command="load" ns="$(arg robot_name)"/>
+
+  <arg name="hw_config_file" value="$(eval '7dof_hardware.yaml' if arg('dof') == 7 else 'hardware.yaml')"/>
+  <rosparam file="$(find interbotix_xsarm_ros_control)/config/$(arg hw_config_file)" command="load" ns="$(arg robot_name)"/>
 
   <include file="$(find interbotix_xsarm_control)/launch/xsarm_control.launch">
     <arg name="robot_model"                       value="$(arg robot_model)"/>
@@ -31,7 +34,7 @@
     respawn="false"
     output="screen"
     ns="$(arg robot_name)"
-    args="spawn arm_controller gripper_controller">
+    args="$(eval 'spawn arm_controller' if arg('dof') == 7 else 'spawn arm_controller gripper_controller')">
   </node>
 
   <node

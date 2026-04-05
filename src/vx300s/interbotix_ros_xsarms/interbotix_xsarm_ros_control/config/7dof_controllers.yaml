@@ -1,0 +1,52 @@
+# 针对 vx300s_7dof (7自由度，无夹爪) 优化的控制器配置
+
+# 1. 轨迹控制器 (用于 MoveIt 规划大段路径)
+arm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - waist
+    - shoulder
+    - elbow
+    - forearm_roll
+    - wrist_1_joint # 对应之前的 wrist_angle
+    - wrist_2_joint # 7-DOF 新增的偏航关节
+    - wrist_3_joint # 对应之前的 wrist_rotate
+  constraints:
+    goal_time: 1.0
+    stopped_velocity_tolerance: 0.05 # 7轴联动建议稍微放宽容差，防止频繁报错
+    # 轨迹执行过程中的允许偏差
+    waist: {trajectory: 0.1, goal: 0.1}
+    shoulder: {trajectory: 0.1, goal: 0.1}
+    elbow: {trajectory: 0.1, goal: 0.1}
+    forearm_roll: {trajectory: 0.1, goal: 0.1}
+    wrist_1_joint: {trajectory: 0.1, goal: 0.1}
+    wrist_2_joint: {trajectory: 0.1, goal: 0.1}
+    wrist_3_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate: 50
+  action_monitor_rate: 20
+
+# 2. 速度组控制器 (强烈建议保留，用于 MoveIt Servo 实时控制)
+# 注意：这需要你的硬件接口支持 VelocityJointInterface
+joint_group_velocity_controller:
+  type: velocity_controllers/JointGroupVelocityController
+  joints:
+    - waist
+    - shoulder
+    - elbow
+    - forearm_roll
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+
+# 新增：用于 MoveIt Servo 的高频实时位置控制器
+joint_group_position_controller:
+  type: position_controllers/JointGroupPositionController
+  joints:
+    - waist
+    - shoulder
+    - elbow
+    - forearm_roll
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint

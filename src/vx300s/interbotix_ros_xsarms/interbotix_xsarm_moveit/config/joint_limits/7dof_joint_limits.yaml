@@ -1,0 +1,45 @@
+# 针对 vx300s_7dof URDF 模型优化后的关节限制文件
+# 所有的关节名称均已根据 URDF 中的 <joint name="..."> 标签进行了校对
+
+default_velocity_scaling_factor: 1.0
+default_acceleration_scaling_factor: 1.0
+
+joint_limits:
+  # --- 基础大关节 ---
+  waist:
+    has_velocity_limits: true
+    max_velocity: 2.35
+    has_acceleration_limits: true
+    max_acceleration: 5
+  shoulder:
+    has_velocity_limits: true
+    max_velocity: 2.35
+    has_acceleration_limits: true
+    max_acceleration: 5
+  elbow:
+    has_velocity_limits: true
+    max_velocity: 2.35
+    has_acceleration_limits: true
+    max_acceleration: 5
+
+  # --- 前臂与 7-DOF 特有手腕关节 ---
+  forearm_roll:
+    has_velocity_limits: true
+    max_velocity: 2.35
+    has_acceleration_limits: true
+    max_acceleration: 5
+  wrist_1_joint:      # 对应原 wrist_angle
+    has_velocity_limits: true
+    max_velocity: 2.35
+    has_acceleration_limits: true
+    max_acceleration: 5
+  wrist_2_joint:      # 7-DOF 新增关节，原 YAML 中缺失
+    has_velocity_limits: true
+    max_velocity: 2.35
+    has_acceleration_limits: true
+    max_acceleration: 5
+  wrist_3_joint:      # 对应原 wrist_rotate
+    has_velocity_limits: true
+    max_velocity: 2.35
+    has_acceleration_limits: true
+    max_acceleration: 5

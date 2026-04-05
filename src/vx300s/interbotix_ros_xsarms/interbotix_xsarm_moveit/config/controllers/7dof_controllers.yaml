@@ -1,0 +1,16 @@
+# 适配 vx300s_7dof 的 MoveIt 控制器配置
+controller_list:
+  - name: "arm_controller" # 注意：这里建议加上机器人命名的命名空间
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - waist
+      - shoulder
+      - elbow
+      - forearm_roll
+      - wrist_1_joint  # 对应之前的 wrist_angle
+      - wrist_2_joint  # 7-DOF 新增的偏航关节
+      - wrist_3_joint  # 对应之前的 wrist_rotate
+
+# 注意：gripper_controller 已完全删除，因为你的硬件不包含夹爪
