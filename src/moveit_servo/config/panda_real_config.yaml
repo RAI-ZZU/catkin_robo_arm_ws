@@ -54,7 +54,7 @@ status_topic: status # Publish status to this topic
 # or trajectory_msgs/JointTrajectory (for Universal Robots and other non-ros_control robots)
 command_out_topic: /velocity_joint_controller/command # Publish outgoing commands here
 command_out_type: std_msgs/Float64MultiArray
- 
+
 ## Collision checking for the entire robot body
 check_collisions: true # Check collisions?
 collision_check_rate: 10.0 # [Hz] Collision-checking can easily bog down a CPU if done too often.

@@ -107,11 +107,63 @@ PoseTrackingStatusCode PoseTracking::moveToPose(const Eigen::Vector3d& positiona
   // - Another thread requested a stop
   while (ros::ok() && !satisfiesPoseTolerance(positional_tolerance, angular_tolerance))
   {
-    // Attempt to update robot pose
-    if (servo_->getCommandFrameTransform(command_frame_transform_))
+  // 1. 捕获返回值
+    bool success = servo_->getCommandFrameTransform(command_frame_transform_);
+
+    // 2. 根据成功与否打印不同的日志
+    if (success)
     {
       command_frame_transform_stamp_ = ros::Time::now();
+      
+      // // 这里的打印将揭开真相：看看 servo_ 内部真正认定的框架名字是什么
+      // ROS_INFO_STREAM_THROTTLE_NAMED(0.5, LOGNAME, 
+      //   "\n--- Servo 内部参数校验 ---" <<
+      //   "\n1. Planning Frame (参考系): " << servo_->getParameters().planning_frame <<
+      //   "\n2. EE Frame (末端系): " << servo_->getParameters().ee_frame_name <<
+      //   "\n3. 计算出的位移: " << command_frame_transform_.translation().transpose() <<
+      //   "\n-------------------------");
+
+
+
+
+      // // --- 姿态计算逻辑 ---
+      // // 1. 获取当前的欧拉角 (使用 ZYX 顺序: Yaw, Pitch, Roll)
+      // Eigen::Vector3d current_rpy = command_frame_transform_.rotation().eulerAngles(2, 1, 0);
+      
+      // // 2. 获取目标的欧拉角
+      // Eigen::Quaterniond q_target(
+      //     target_pose_.pose.orientation.w,
+      //     target_pose_.pose.orientation.x,
+      //     target_pose_.pose.orientation.y,
+      //     target_pose_.pose.orientation.z);
+      // Eigen::Vector3d target_rpy = q_target.toRotationMatrix().eulerAngles(2, 1, 0);
+
+      // // --- 增强版 Debug 打印 ---
+      // ROS_INFO_STREAM_THROTTLE_NAMED(0.5, LOGNAME, 
+      //   "\n====== 实时位姿监控 ======" <<
+      //   "\n [位置 Position]" <<
+      //   "\n   Current: x:" << command_frame_transform_.translation()(0) << " y:" << command_frame_transform_.translation()(1) << " z:" << command_frame_transform_.translation()(2) <<
+      //   "\n   Target : x:" << target_pose_.pose.position.x << " y:" << target_pose_.pose.position.y << " z:" << target_pose_.pose.position.z <<
+      //   "\n [姿态 Orientation (RPY)]" <<
+      //   "\n   Current: R:" << current_rpy(2) << " P:" << current_rpy(1) << " Y:" << current_rpy(0) <<
+      //   "\n   Target : R:" << target_rpy(2) << " P:" << target_rpy(1) << " Y:" << target_rpy(0) <<
+      //   "\n [角度总误差 Angle Error]" <<
+      //   "\n   " << (angular_error_ ? std::to_string(*angular_error_) : "N/A") << " rad" <<
+      //   "\n==========================");
     }
+
+    
+    else
+    {
+      // 如果你看到这一行，说明 Servo 内部拒绝了计算
+      ROS_ERROR_NAMED(LOGNAME, "FK FAILED! Servo cannot compute transform. Check joint_states topic!");
+    }
+    // --- 添加下面这行进行 Debug 打印 ---
+    // ROS_INFO_STREAM_THROTTLE_NAMED(0.5, LOGNAME, "Current EE Pose: " 
+    //   << "x: " << command_frame_transform_.translation()(0) << ", "
+    //   << "y: " << command_frame_transform_.translation()(1) << ", "
+    //   << "z: " << command_frame_transform_.translation()(2));
+    // ----------------------------------    
 
     // Check that end-effector pose (command frame transform) is recent enough.
     if (!haveRecentEndEffectorPose(target_pose_timeout))
@@ -268,14 +320,31 @@ geometry_msgs::TwistStampedConstPtr PoseTracking::calculateTwistCommand()
   {
     std::lock_guard<std::mutex> lock(target_pose_mtx_);
     msg->header.frame_id = target_pose_.header.frame_id;
+    // ROS_INFO_STREAM("Commanding speed relative to frame: " << target_pose_.header.frame_id);
+
+    // Position 误差计算与 PID 输出
+    double x_err = target_pose_.pose.position.x - command_frame_transform_.translation()(0);
+    double y_err = target_pose_.pose.position.y - command_frame_transform_.translation()(1);
+    double z_err = target_pose_.pose.position.z - command_frame_transform_.translation()(2);
+
+    twist.linear.x = cartesian_position_pids_[0].computeCommand(x_err, loop_rate_.expectedCycleTime());
+    twist.linear.y = cartesian_position_pids_[1].computeCommand(y_err, loop_rate_.expectedCycleTime());
+    twist.linear.z = cartesian_position_pids_[2].computeCommand(z_err, loop_rate_.expectedCycleTime());
+
+    // --- 关键 Debug 打印 ---
+    // ROS_INFO_STREAM_THROTTLE_NAMED(0.5, LOGNAME, "PID DEBUG: " 
+    //   << "\n  Frame ID: " << msg->header.frame_id
+    //   << "\n  X Error: " << x_err << " -> X Vel: " << twist.linear.x
+    //   << "\n  Z Error: " << z_err << " -> Z Vel: " << twist.linear.z);
+
 
     // Position
-    twist.linear.x = cartesian_position_pids_[0].computeCommand(
-        target_pose_.pose.position.x - command_frame_transform_.translation()(0), loop_rate_.expectedCycleTime());
-    twist.linear.y = cartesian_position_pids_[1].computeCommand(
-        target_pose_.pose.position.y - command_frame_transform_.translation()(1), loop_rate_.expectedCycleTime());
-    twist.linear.z = cartesian_position_pids_[2].computeCommand(
-        target_pose_.pose.position.z - command_frame_transform_.translation()(2), loop_rate_.expectedCycleTime());
+    // twist.linear.x = cartesian_position_pids_[0].computeCommand(
+    //     target_pose_.pose.position.x - command_frame_transform_.translation()(0), loop_rate_.expectedCycleTime());
+    // twist.linear.y = cartesian_position_pids_[1].computeCommand(
+    //     target_pose_.pose.position.y - command_frame_transform_.translation()(1), loop_rate_.expectedCycleTime());
+    // twist.linear.z = cartesian_position_pids_[2].computeCommand(
+    //     target_pose_.pose.position.z - command_frame_transform_.translation()(2), loop_rate_.expectedCycleTime());
 
     // Orientation algorithm:
     // - Find the orientation error as a quaternion: q_error = q_desired * q_current ^ -1

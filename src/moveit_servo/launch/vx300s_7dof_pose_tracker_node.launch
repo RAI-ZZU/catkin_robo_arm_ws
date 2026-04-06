@@ -1,7 +1,7 @@
 <launch>
   <arg name="robot_name"      default="vx300s_7dof"/>
   <arg name="robot_model"     default="vx300s_7dof"/>
-  <arg name="speed_ctrl"      default="false"/> 
+  <arg name="speed_ctrl"      default="true"/> 
   <arg name="dof"             default="7"/>
 
   <include file="$(find moveit_servo)/launch/vx300s_7dof_moveit_servo_common.launch">
@@ -19,7 +19,10 @@
       
       <rosparam unless="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/vx300s_7dof_pos_ctrl.yaml" /> 
 
-      <rosparam command="load" file="$(find moveit_servo)/config/pose_tracking_settings.yaml" />
+      <rosparam if="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/pose_tracking_settings_vx300s_7dof_vel_ctrl.yaml" /> 
+
+      <rosparam unless="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/pose_tracking_settings_vx300s_7dof_pos_ctrl.yaml" />
+      
       
       <remap from="joint_states" to="/$(arg robot_name)/joint_states"/>
     </node>
