@@ -4,11 +4,18 @@
   <arg name="speed_ctrl"      default="true"/> 
   <arg name="dof"             default="7"/>
 
-  <include file="$(find moveit_servo)/launch/vx300s_7dof_moveit_servo_common.launch">
-    <arg name="robot_name"      value="$(arg robot_name)"/>
-  </include>
+  <!-- 不套在ns中了，内部通过 robot_name  已经自己维护了 -->
+  <include file="$(find interbotix_xsarm_moveit)/launch/xsarm_moveit.launch">
+    <arg name="robot_name"      value="$(arg robot_name)"/>  
+    <arg name="robot_model"     value="$(arg robot_model)"/>
+    <arg name="use_actual"      value="true"/>
+    <arg name="dof"             value="$(arg dof)"/>
+  </include> 
+
 
   <group ns="$(arg robot_name)">
+
+    <include file="$(find moveit_servo)/launch/vx300s_7dof_moveit_servo_common.launch"/>
 
     <node name="joint_group_controller_loader" pkg="controller_manager" type="spawner" 
         args="--stopped joint_group_velocity_controller joint_group_position_controller" />
