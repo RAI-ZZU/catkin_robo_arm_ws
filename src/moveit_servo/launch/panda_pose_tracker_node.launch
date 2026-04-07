@@ -5,6 +5,11 @@
   <arg name="robot_name"  default="$(arg arm_id)"/>
   <arg name="robot_ip" default="192.168.5.245"/>
 
+  <!-- 做一定的位置偏移 -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="panda_to_world" 
+        args="2 0 0 0 0 0 world panda_link0" />
+
+
   <group ns="$(arg robot_name)">
 
     <!-- 启动panda机械臂，主要是速度控制器等底层启动 -->
@@ -22,7 +27,6 @@
       <arg name="load_gripper" value="true" />
     </include>
 
-
     <!-- 将关节控制器，力矩控制器加载到控制器管理器中，但是不启动 -->
     <node name="trajectory_controller_spawner" 
           pkg="controller_manager" 
@@ -31,19 +35,14 @@
           output="screen" 
           args="--stopped position_joint_trajectory_controller  effort_joint_trajectory_controller" />
 
+    <node name="pose_tracker" pkg="moveit_servo" type="pose_tracker_node" output="screen">
 
+    <rosparam command="load"  file="$(find moveit_servo)/config/panda_vel_ctrl.yaml" />
 
-    <node name="panda_pose_tracker_node"
-          pkg="moveit_servo"
-          type="pose_tracker_node"
-          output="screen">
+    <rosparam command="load"  file="$(find moveit_servo)/config/pose_tracking_settings_panda_vel_ctrl.yaml" />
+    <!-- pose_tracker_node节点会自动添加它的私有空间,而panda 的ros controller只要/panda/velocity_joint_controller/command, 所以在这里重映射一下 -->
+    <remap from="~velocity_joint_controller/command"   to="/$(arg robot_name)/velocity_joint_controller/command" />
 
-  
-
-      <rosparam command="load"
-                file="$(find moveit_servo)/config/panda_vel_ctrl.yaml" />
-      <rosparam command="load" 
-                file="$(find moveit_servo)/config/pose_tracking_settings_panda_vel_ctrl.yaml" />
     </node>
 
   </group>

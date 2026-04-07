@@ -4,34 +4,38 @@
   <arg name="speed_ctrl"      default="true"/> 
   <arg name="dof"             default="7"/>
 
+  <node pkg="tf2_ros" type="static_transform_publisher" name="vx300s_to_world"  args="-2 0 0 0 0 0 world vx300s_7dof/base_link" />
+
   <!-- 不套在ns中了，内部通过 robot_name  已经自己维护了 -->
-  <include file="$(find interbotix_xsarm_moveit)/launch/xsarm_moveit.launch">
+  <!-- <include file="$(find interbotix_xsarm_moveit)/launch/xsarm_moveit.launch">
     <arg name="robot_name"      value="$(arg robot_name)"/>  
     <arg name="robot_model"     value="$(arg robot_model)"/>
     <arg name="use_actual"      value="true"/>
     <arg name="dof"             value="$(arg dof)"/>
-  </include> 
+  </include>  -->
 
 
   <group ns="$(arg robot_name)">
 
     <include file="$(find moveit_servo)/launch/vx300s_7dof_moveit_servo_common.launch"/>
 
-    <node name="joint_group_controller_loader" pkg="controller_manager" type="spawner" 
-        args="--stopped joint_group_velocity_controller joint_group_position_controller" />
+    <node name="joint_group_controller_loader" pkg="controller_manager" type="spawner"   
+      args="--stopped joint_group_velocity_controller joint_group_position_controller" />
 
-    <node name="vx300s_pose_tracker" pkg="moveit_servo" type="pose_tracker_node" output="screen">
-      
-      <rosparam if="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/vx300s_7dof_vel_ctrl.yaml" /> 
-      
-      <rosparam unless="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/vx300s_7dof_pos_ctrl.yaml" /> 
+    <node name="pose_tracker" pkg="moveit_servo" type="pose_tracker_node" output="screen">
+    
+    <rosparam if="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/vx300s_7dof_vel_ctrl.yaml" /> 
+    
+    <rosparam unless="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/vx300s_7dof_pos_ctrl.yaml" /> 
 
-      <rosparam if="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/pose_tracking_settings_vx300s_7dof_vel_ctrl.yaml" /> 
+    <rosparam if="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/pose_tracking_settings_vx300s_7dof_vel_ctrl.yaml" /> 
 
-      <rosparam unless="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/pose_tracking_settings_vx300s_7dof_pos_ctrl.yaml" />
-      
-      
-      <remap from="joint_states" to="/$(arg robot_name)/joint_states"/>
+    <rosparam unless="$(arg speed_ctrl)" command="load" file="$(find moveit_servo)/config/pose_tracking_settings_vx300s_7dof_pos_ctrl.yaml" />
+    
+    
+    <remap from="joint_states" to="/$(arg robot_name)/joint_states"/>
+    <remap from="~joint_group_velocity_controller/command"   to="/$(arg robot_name)/joint_group_velocity_controller/command" />
+
     </node>
   </group>
 </launch>
